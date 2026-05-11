@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AB Learning Pack — Teacher Intake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#0E0E0E;
+  --black-soft:#1A1A1A;
+  --white:#FFFFFF;
+  --bg:#F4F2EE;
+  --bg-soft:#EAE7E0;
+  --accent:#FF4D2E;
+  --accent-deep:#E63E1E;
+  --accent-soft:#FFE8E1;
+  --gray:#7A7A7A;
+  --gray-light:#B8B5AE;
+  --line:#D5D2CC;
+  --line-soft:#E5E2DC;
+  --green:#3D7A4F;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--black);
+  font-family:'Plus Jakarta Sans',sans-serif;
+  line-height:1.55;
+  font-size:16px;
+}
+body.ar{font-family:'Noto Sans Arabic','Plus Jakarta Sans',sans-serif;direction:rtl}
+.wrap{max-width:780px;margin:0 auto;padding:28px 24px 80px}
+
+/* ============================================ TOP BAR */
+.top-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding-bottom:24px;
+  border-bottom:2px solid var(--black);
+  margin-bottom:48px;
+  flex-wrap:wrap;
+  gap:14px;
+}
+.logo-wrap{display:flex;align-items:center;gap:14px}
+.logo-svg{width:48px;height:48px;flex-shrink:0}
+.logo-text{font-family:'Instrument Serif',serif;font-size:26px;font-weight:400;letter-spacing:-0.02em;line-height:1}
+.logo-text em{font-style:italic;color:var(--accent)}
+.meta-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;color:var(--gray);text-transform:uppercase}
+.lang-switch{display:flex;gap:4px}
+.lang-btn{background:transparent;border:1.5px solid var(--black);padding:6px 12px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;letter-spacing:0.05em;color:var(--black);cursor:pointer;text-transform:uppercase;transition:all 0.15s}
+.lang-btn:hover{background:var(--black);color:var(--white)}
+.lang-btn.active{background:var(--black);color:var(--accent)}
+
+/* ============================================ HERO */
+.hero{margin-bottom:64px}
+h1{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(48px, 9vw, 88px);
+  line-height:0.9;
+  letter-spacing:-0.05em;
+  font-weight:800;
+  margin-bottom:28px;
+}
+h1 em{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-weight:400;
+  color:var(--accent);
+}
+.subhero{
+  font-size:clamp(16px, 2vw, 19px);
+  line-height:1.5;
+  max-width:560px;
+  margin-bottom:36px;
+  color:var(--gray);
+}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.hero-tag{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.05em;
+  padding:8px 14px;
+  border:1.5px solid var(--black);
+  background:var(--white);
+  text-transform:uppercase;
+  font-weight:500;
+}
+.hero-tag.accent{background:var(--black);color:var(--accent)}
+
+/* ============================================ SECTION */
+.section{
+  margin-bottom:48px;
+  padding-top:36px;
+  border-top:1px solid var(--line);
+}
+.section-head{margin-bottom:32px}
+.section-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:0.1em;
+  color:var(--gray);
+  margin-bottom:10px;
+  text-transform:uppercase;
+  font-weight:500;
+}
+h2{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:clamp(28px, 5vw, 40px);
+  line-height:1;
+  letter-spacing:-0.03em;
+  font-weight:700;
+  margin-bottom:8px;
+}
+h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent)}
+.section-desc{
+  font-size:15px;
+  color:var(--gray);
+  max-width:520px;
+}
+
+/* ============================================ FIELDS */
+.field{margin-bottom:32px}
+label{
+  display:block;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-bottom:10px;
+  font-weight:600;
+}
+body.ar label{font-family:'Noto Sans Arabic','JetBrains Mono',monospace;letter-spacing:0}
+.req{color:var(--accent)}
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=date],
+input[type=number],
+select,
+textarea{
+  width:100%;
+  border:none;
+  border-bottom:2px solid var(--black);
+  background:transparent;
+  padding:12px 0;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:20px;
+  font-weight:500;
+  color:var(--black);
+  transition:border-color 0.2s;
+}
+body.ar input[type=text],
+body.ar input[type=email],
+body.ar textarea,
+body.ar select{font-family:'Noto Sans Arabic','Plus Jakarta Sans',sans-serif}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:var(--gray-light);font-weight:400}
+textarea{min-height:90px;resize:vertical;padding:12px 0;line-height:1.5;font-size:16px}
+select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%230E0E0E' d='M6 8L0 0h12z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;padding-right:24px;cursor:pointer}
+.hint{display:block;font-size:13px;color:var(--gray);margin-top:8px;font-style:italic;line-height:1.5}
+
+/* ============================================ RADIO/CHECK */
+.option-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:4px}
+.opt{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 16px;
+  border:1.5px solid var(--black);
+  background:var(--white);
+  cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:14px;
+  font-weight:600;
+  transition:all 0.15s;
+}
+body.ar .opt{font-family:'Noto Sans Arabic','Plus Jakarta Sans',sans-serif}
+.opt:hover{background:var(--black);color:var(--white)}
+.opt input{accent-color:var(--accent);width:14px;height:14px;flex-shrink:0;cursor:pointer}
+.opt:has(input:checked){background:var(--accent);color:var(--white);border-color:var(--accent)}
+
+/* ============================================ FILE UPLOAD */
+.file-field{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:24px;
+  border:1.5px dashed var(--black);
+  background:var(--white);
+  cursor:pointer;
+  transition:all 0.15s;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+  letter-spacing:0.05em;
+  color:var(--black);
+  text-transform:uppercase;
+  font-weight:500;
+}
+.file-field:hover{background:var(--black);color:var(--white);border-style:solid}
+.file-field input[type=file]{display:none}
+.file-field.has-file{background:var(--accent-soft);border-color:var(--accent);border-style:solid;color:var(--black);text-transform:none;letter-spacing:0;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600}
+.file-field.has-file:hover{background:var(--accent);color:var(--white)}
+
+/* ============================================ PRICE CARD */
+.price-card{
+  background:var(--black);
+  color:var(--white);
+  padding:48px 40px;
+  position:relative;
+  overflow:hidden;
+  margin:24px 0 32px;
+}
+.price-card:before{
+  content:"$57";
+  position:absolute;
+  top:-40px;
+  right:-30px;
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:280px;
+  line-height:1;
+  color:rgba(255,255,255,0.04);
+  font-weight:400;
+  pointer-events:none;
+}
+.price-card-head{
+  position:relative;
+  margin-bottom:24px;
+}
+.price-card-eyebrow{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.1em;
+  color:var(--accent);
+  margin-bottom:8px;
+  text-transform:uppercase;
+}
+.price-card .big-price{
+  font-size:88px;
+  line-height:1;
+  font-weight:800;
+  letter-spacing:-0.04em;
+  margin-bottom:8px;
+}
+.price-card .big-price small{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:18px;
+  font-weight:400;
+  color:var(--gray-light);
+  letter-spacing:0;
+}
+.price-card .pack-name{
+  font-family:'Instrument Serif',serif;
+  font-style:italic;
+  font-size:30px;
+  font-weight:400;
+  color:var(--accent);
+}
+.price-list{list-style:none;position:relative}
+.price-list li{
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  font-weight:500;
+}
+.price-list li:before{
+  content:"+";
+  color:var(--accent);
+  font-weight:800;
+  margin-right:14px;
+  font-size:18px;
+}
+.price-list li:last-child{border-bottom:none}
+
+/* ============================================ REASSURANCE */
+.reassure{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--black);
+  border:1.5px solid var(--black);
+  margin-bottom:28px;
+}
+.reassure-item{
+  background:var(--white);
+  padding:18px 20px;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.reassure-mark{
+  font-family:'JetBrains Mono',monospace;
+  font-weight:700;
+  color:var(--accent);
+  font-size:18px;
+  line-height:1;
+}
+
+/* ============================================ ADD-ONS */
+.addon-block{margin-top:24px}
+.addon-head{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--gray);
+  font-weight:600;
+  margin-bottom:6px;
+}
+.addon-sub{font-size:14px;color:var(--gray);margin-bottom:18px;font-style:italic}
+.addon-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 16px;
+  border:1.5px solid var(--black);
+  background:var(--white);
+  margin-bottom:8px;
+}
+.addon-row input[type=number]{
+  width:70px;
+  border:1.5px solid var(--black);
+  padding:6px 8px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:14px;
+  font-weight:700;
+  text-align:center;
+  background:var(--bg);
+}
+.addon-label{font-size:14px;font-weight:600;flex:1}
+.addon-price{
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;
+  color:var(--accent);
+  font-weight:700;
+  letter-spacing:0.05em;
+}
+
+/* ============================================ MULTIPLIER */
+.multiplier-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-top:14px;
+}
+.multi-opt{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 16px;
+  border:1.5px solid var(--black);
+  background:var(--white);
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+}
+.multi-opt:has(input:checked){background:var(--accent);color:var(--white);border-color:var(--accent)}
+.multi-opt input{accent-color:var(--accent)}
+
+/* ============================================ PRICE PREVIEW */
+.price-preview{
+  background:var(--accent);
+  color:var(--white);
+  padding:24px 28px;
+  margin-top:28px;
+  text-align:center;
+  position:relative;
+}
+.price-preview .breakdown{
+  font-family:'JetBrains Mono',monospace;
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:0.05em;
+  opacity:0.9;
+  margin-bottom:6px;
+  text-transform:uppercase;
+}
+.price-preview .total{
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-0.03em;
+  line-height:1;
+}
+.price-preview .total small{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:18px}
+
+/* ============================================ SUBMIT */
+.submit-bar{margin-top:48px;text-align:center}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:var(--accent);
+  color:var(--white);
+  padding:24px 48px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  border:none;
+  cursor:pointer;
+  text-transform:uppercase;
+  transition:all 0.15s;
+}
+body.ar .btn{font-family:'Noto Sans Arabic','Plus Jakarta Sans',sans-serif;letter-spacing:0}
+.btn:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.btn:disabled{background:var(--gray-light);cursor:not-allowed;transform:none}
+.btn:after{content:"→";font-size:24px;font-weight:400}
+body.ar .btn:after{content:"←"}
+.error-msg{display:none;background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 18px;margin-top:14px;color:var(--black);font-size:14px;font-weight:500;text-align:left}
+.error-msg.show{display:block}
+
+/* ============================================ LOADING + THANK YOU */
+.loading{display:none;text-align:center;padding:60px 20px}
+.loading.show{display:block}
+.spinner{width:40px;height:40px;border:3px solid var(--bg-soft);border-top-color:var(--accent);border-radius:50%;margin:0 auto 18px;animation:spin 0.8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-text{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray)}
+
+.thank-you{display:none;background:var(--black);color:var(--white);padding:60px 40px;text-align:center;margin-top:40px;position:relative;overflow:hidden}
+.thank-you.show{display:block}
+.thank-you:before{content:"✓";position:absolute;top:-50px;right:-30px;font-family:'Instrument Serif',serif;font-size:300px;line-height:1;color:rgba(255,255,255,0.04)}
+.thank-you-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;font-weight:600;margin-bottom:14px;position:relative}
+.thank-you h2{color:var(--white);position:relative}
+.thank-you h2 em{color:var(--accent)}
+.thank-you p{font-size:16px;color:var(--gray-light);margin:18px auto 28px;max-width:480px;line-height:1.6;position:relative}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:var(--white);padding:18px 32px;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.05em;text-decoration:none;text-transform:uppercase;position:relative}
+.whatsapp-btn:hover{background:var(--accent-deep)}
+.thank-you-sign{font-family:'Instrument Serif',serif;font-style:italic;font-size:14px;color:var(--gray-light);margin-top:36px;position:relative}
+
+/* ============================================ MOBILE */
+@media (max-width:480px){
+  .wrap{padding:20px 16px 40px}
+  .top-bar{padding-bottom:18px;margin-bottom:32px}
+  .logo-svg{width:42px;height:42px}
+  .logo-text{font-size:22px}
+  h1{font-size:48px}
+  .subhero{font-size:16px}
+  .price-card{padding:32px 24px}
+  .price-card:before{font-size:180px;top:-20px;right:-20px}
+  .price-card .big-price{font-size:64px}
+  .price-card .pack-name{font-size:24px}
+  .reassure{grid-template-columns:1fr}
+  .multiplier-row{grid-template-columns:1fr}
+  .option-grid{grid-template-columns:1fr 1fr}
+  .price-preview .total{font-size:34px}
+  .btn{padding:18px 32px;font-size:14px;width:100%;justify-content:center}
+  h2{font-size:30px}
+}
+</style>
+</head>
+<body class="en">
+<div class="wrap">
+
+  <!-- ============================================ TOP BAR -->
+  <div class="top-bar">
+    <div class="logo-wrap">
+      <!-- Animated AB logo, simplified for the bold aesthetic -->
+      <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>
+            .ab-pulse-1{animation:ab-pulse 2s ease-in-out infinite;animation-delay:0s;transform-origin:center;transform-box:fill-box}
+            .ab-pulse-2{animation:ab-pulse 2s ease-in-out infinite;animation-delay:0.3s;transform-origin:center;transform-box:fill-box}
+            .ab-pulse-3{animation:ab-pulse 2s ease-in-out infinite;animation-delay:0.6s;transform-origin:center;transform-box:fill-box}
+            @keyframes ab-pulse{0%,100%{opacity:0.6;transform:scale(0.85)}50%{opacity:1;transform:scale(1.15)}}
+            @media (prefers-reduced-motion:reduce){[class^="ab-pulse"]{animation:none}}
+          </style>
+        </defs>
+        <rect x="2" y="2" width="96" height="96" fill="#0E0E0E"/>
+        <circle class="ab-pulse-1" cx="14" cy="14" r="3" fill="#FF4D2E"/>
+        <circle class="ab-pulse-2" cx="86" cy="14" r="3" fill="#FF4D2E"/>
+        <circle class="ab-pulse-3" cx="14" cy="86" r="3" fill="#FF4D2E"/>
+        <text x="50" y="68" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="48" fill="#FFFFFF" letter-spacing="-2">AB</text>
+      </svg>
+      <div class="logo-text">AB <em>Learning Pack</em></div>
+    </div>
+    <div class="meta-row">
+      <div class="meta">EST · 2026 · BEIRUT</div>
+      <div class="lang-switch">
+        <button type="button" class="lang-btn active" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="ar">ع</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================ HERO -->
+  <div class="hero">
+    <h1 data-en="Teaching kits." data-fr="Kits pédagogiques." data-ar="حزم تعليمية.">Teaching kits.</h1>
+    <h1 style="margin-top:-12px"><em data-en="Done right." data-fr="Faits avec soin." data-ar="بإتقان.">Done right.</em></h1>
+    <p class="subhero" data-en="Lesson plans. Booklets. Slides. Assessments. Built for private school teachers in Lebanon. Delivered in 24 hours, in your school's format." data-fr="Plans de leçon. Cahiers. Diapos. Évaluations. Conçus pour les enseignants d'écoles privées au Liban. Livrés en 24 heures, dans le format de votre école." data-ar="خطط الدرس. كتيبات. شرائح. تقييمات. مُعدّة لمعلمي المدارس الخاصة في لبنان. تُسلَّم خلال ٢٤ ساعة بنموذج مدرستك.">Lesson plans. Booklets. Slides. Assessments. Built for private school teachers in Lebanon. Delivered in 24 hours, in your school's format.</p>
+    <div class="hero-tags">
+      <span class="hero-tag accent">// $57 / UNIT</span>
+      <span class="hero-tag">// 24H DELIVERY</span>
+      <span class="hero-tag">// YOUR NAME ON IT</span>
+      <span class="hero-tag">// YOUR SCHOOL'S FORMAT</span>
+    </div>
+  </div>
+
+  <form id="intakeForm">
+
+    <!-- ============================================ SECTION 1 — WHO -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">01 / WHO</div>
+        <h2 data-en="Who's asking?" data-fr="Qui demande ?" data-ar="من يطلب؟">Who's asking?</h2>
+        <p class="section-desc" data-en="So I can reach you and put your name on the deliverables." data-fr="Pour vous contacter et inscrire votre nom sur les livrables." data-ar="حتى أتمكن من التواصل معك ووضع اسمك على المواد.">So I can reach you and put your name on the deliverables.</p>
+      </div>
+      <div class="field">
+        <label data-en="Full Name *" data-fr="Nom Complet *" data-ar="الاسم الكامل *">Full Name <span class="req">*</span></label>
+        <input type="text" name="teacher_name" required>
+      </div>
+      <div class="field">
+        <label data-en="Email *" data-fr="Email *" data-ar="البريد الإلكتروني *">Email <span class="req">*</span></label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="field">
+        <label data-en="WhatsApp" data-fr="WhatsApp" data-ar="واتساب">WhatsApp</label>
+        <input type="tel" name="whatsapp" placeholder="+961...">
+      </div>
+      <div class="field">
+        <label data-en="School *" data-fr="École *" data-ar="المدرسة *">School <span class="req">*</span></label>
+        <input type="text" name="school" required>
+      </div>
+    </div>
+
+    <!-- ============================================ SECTION 2 — WHERE -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">02 / WHERE</div>
+        <h2 data-en="Where you teach" data-fr="Où vous enseignez" data-ar="أين تدرّس">Where you teach</h2>
+        <p class="section-desc" data-en="The class, the curriculum, the language." data-fr="La classe, le programme, la langue." data-ar="الصف، المنهج، اللغة.">The class, the curriculum, the language.</p>
+      </div>
+      <div class="field">
+        <label data-en="Grade Level *" data-fr="Niveau *" data-ar="الصف *">Grade Level <span class="req">*</span></label>
+        <select name="grade" required>
+          <option value="">— select —</option>
+          <option>KG1</option><option>KG2</option>
+          <option>Grade 1</option><option>Grade 2</option><option>Grade 3</option>
+          <option>Grade 4</option><option>Grade 5</option><option>Grade 6</option>
+          <option>Grade 7</option><option>Grade 8</option><option>Grade 9</option>
+          <option>Grade 10</option><option>Grade 11</option><option>Grade 12</option>
+        </select>
+      </div>
+      <div class="field">
+        <label data-en="Subject *" data-fr="Matière *" data-ar="المادة *">Subject <span class="req">*</span></label>
+        <input type="text" name="subject" placeholder="Mathematics, English, Science…" required>
+      </div>
+      <div class="field">
+        <label data-en="Curriculum *" data-fr="Programme *" data-ar="المنهج *">Curriculum <span class="req">*</span></label>
+        <select name="curriculum" id="curriculumSelect" required>
+          <option value="">— select —</option>
+          <option>IB PYP (Primary Years)</option>
+          <option>IB MYP (Middle Years)</option>
+          <option>IB DP (Diploma)</option>
+          <option>American (Common Core / AERO)</option>
+          <option>British (Cambridge / Edexcel)</option>
+          <option>Lebanese National — English medium</option>
+          <option>Lebanese National — French medium</option>
+          <option>Lebanese National — Arabic medium</option>
+          <option>French (Mission Laïque / AEFE)</option>
+          <option>IC Beirut (Toddle / AERO+IB hybrid)</option>
+          <option value="Other">Other — specify</option>
+        </select>
+        <input type="text" name="curriculum_other" id="curriculumOther" placeholder="Type your curriculum…" style="display:none;margin-top:10px">
+      </div>
+      <div class="field">
+        <label data-en="Language of Instruction" data-fr="Langue d'Enseignement" data-ar="لغة التدريس">Language of Instruction</label>
+        <div class="option-grid">
+          <label class="opt"><input type="radio" name="language" value="EN" checked><span>English</span></label>
+          <label class="opt"><input type="radio" name="language" value="FR"><span>Français</span></label>
+          <label class="opt"><input type="radio" name="language" value="AR"><span>عربي</span></label>
+          <label class="opt"><input type="radio" name="language" value="Bilingual"><span data-en="Bilingual" data-fr="Bilingue" data-ar="ثنائي">Bilingual</span></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ SECTION 3 — WHAT -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">03 / WHAT</div>
+        <h2 data-en="What you need" data-fr="Ce qu'il vous faut" data-ar="ما تحتاج إليه">What you need</h2>
+        <p class="section-desc" data-en="The topic, the outcomes, the deadline." data-fr="Le sujet, les objectifs, l'échéance." data-ar="الموضوع، الأهداف، الموعد النهائي.">The topic, the outcomes, the deadline.</p>
+      </div>
+      <div class="field">
+        <label data-en="Number of Lessons *" data-fr="Nombre de Leçons *" data-ar="عدد الدروس *">Number of Lessons <span class="req">*</span></label>
+        <input type="number" name="num_lessons" min="1" max="20" value="1" required>
+      </div>
+      <div class="field">
+        <label data-en="Topic / Unit Name *" data-fr="Sujet / Unité *" data-ar="الموضوع / الوحدة *">Topic / Unit Name <span class="req">*</span></label>
+        <input type="text" name="topic" placeholder="Volume & Capacity, Algebraic Expressions…" required>
+      </div>
+      <div class="field">
+        <label data-en="Lesson Titles" data-fr="Titres des Leçons" data-ar="عناوين الدروس">Lesson Titles</label>
+        <textarea name="lesson_titles" placeholder="One per line. e.g.&#10;Lesson 1 — What is volume?&#10;Lesson 2 — Comparing capacity&#10;Lesson 3 — Pour and find out"></textarea>
+        <span class="hint" data-en="Optional. If you have a sequence in mind, share it. Otherwise I'll propose one." data-fr="Optionnel. Si vous avez une séquence, partagez-la." data-ar="اختياري. إذا كان لديك تسلسل، شاركه.">Optional. If you have a sequence in mind, share it. Otherwise I'll propose one.</span>
+      </div>
+      <div class="field">
+        <label data-en="Learning Outcomes *" data-fr="Objectifs d'Apprentissage *" data-ar="أهداف التعلم *">Learning Outcomes <span class="req">*</span></label>
+        <textarea name="outcomes" placeholder="What should students know or be able to do? List 2–5 outcomes." required></textarea>
+      </div>
+      <div class="field">
+        <label data-en="Deadline *" data-fr="Échéance *" data-ar="الموعد النهائي *">Deadline <span class="req">*</span></label>
+        <input type="date" name="deadline" required>
+        <span class="hint" data-en="Standard delivery is 24 hours. Rush (under 24h) adds 50%." data-fr="Livraison standard 24h. Express +50%." data-ar="التسليم القياسي ٢٤ ساعة. المستعجل +٥٠٪.">Standard delivery is 24 hours. Rush (under 24h) adds 50%.</span>
+      </div>
+    </div>
+
+    <!-- ============================================ SECTION 4 — HOW -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">04 / HOW</div>
+        <h2 data-en="How it looks" data-fr="Le style" data-ar="الشكل">How it looks</h2>
+        <p class="section-desc" data-en="Upload what shows your school's style. The more I see, the closer the match." data-fr="Téléchargez ce qui montre le style de votre école." data-ar="ارفع ما يُظهر أسلوب مدرستك.">Upload what shows your school's style. The more I see, the closer the match.</p>
+      </div>
+
+      <div class="field">
+        <label data-en="School's Lesson Plan Template" data-fr="Modèle de Plan de Leçon" data-ar="نموذج خطة الدرس">School's Lesson Plan Template</label>
+        <label class="file-field" id="ff-template">
+          <input type="file" name="school_template" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+          <span class="upload-label" data-en="// UPLOAD TEMPLATE" data-fr="// MODÈLE" data-ar="// ارفع النموذج">// UPLOAD TEMPLATE</span>
+        </label>
+        <span class="hint" data-en="Only the lesson plan matches your school's format. Booklets, slides, worksheets, and assessments use AB Learning Pack design." data-fr="Seul le plan suit le modèle de votre école. Le reste utilise le design AB Learning Pack." data-ar="فقط خطة الدرس تتبع نموذج مدرستك. الباقي بتصميم AB Learning Pack.">Only the lesson plan matches your school's format. Booklets, slides, worksheets, and assessments use AB Learning Pack design.</span>
+      </div>
+
+      <div class="field">
+        <label data-en="Sample of Your Previous Work" data-fr="Échantillon de Votre Travail" data-ar="عيّنة من عملك">Sample of Your Previous Work</label>
+        <label class="file-field" id="ff-sample">
+          <input type="file" name="teacher_sample" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+          <span class="upload-label" data-en="// UPLOAD SAMPLE" data-fr="// ÉCHANTILLON" data-ar="// ارفع العيّنة">// UPLOAD SAMPLE</span>
+        </label>
+        <span class="hint" data-en="Optional. Helps me match your teaching voice." data-fr="Optionnel. Utile pour matcher votre style." data-ar="اختياري. يساعد في مطابقة أسلوبك.">Optional. Helps me match your teaching voice.</span>
+      </div>
+
+      <div class="field">
+        <label data-en="School Logo (PNG / JPG)" data-fr="Logo de l'École" data-ar="شعار المدرسة">School Logo (PNG / JPG)</label>
+        <label class="file-field" id="ff-logo">
+          <input type="file" name="school_logo" accept=".png,.jpg,.jpeg,.svg">
+          <span class="upload-label" data-en="// UPLOAD LOGO" data-fr="// LOGO" data-ar="// ارفع الشعار">// UPLOAD LOGO</span>
+        </label>
+        <span class="hint" data-en="If provided, embedded in the lesson plan header." data-fr="Si fourni, intégré dans l'en-tête du plan." data-ar="إذا تم تقديمه، يُدرج في رأس الخطة.">If provided, embedded in the lesson plan header.</span>
+      </div>
+
+      <div class="field">
+        <label data-en="Coordinator's Checklist (optional)" data-fr="Liste du Coordinateur (optionnel)" data-ar="قائمة المنسق (اختياري)">Coordinator's Checklist (optional)</label>
+        <label class="file-field" id="ff-checklist">
+          <input type="file" name="coord_checklist" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg">
+          <span class="upload-label" data-en="// UPLOAD CHECKLIST" data-fr="// LISTE" data-ar="// ارفع القائمة">// UPLOAD CHECKLIST</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- ============================================ SECTION 5 — THE PACK -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">05 / THE OFFER</div>
+        <h2 data-en="One pack." data-fr="Un pack." data-ar="حزمة واحدة.">One pack. <em data-en="That's it." data-fr="C'est tout." data-ar="فقط.">That's it.</em></h2>
+        <p class="section-desc" data-en="One unit, one price. Add extras at $5 each if you need more." data-fr="Une unité, un prix. Ajoutez des extras à 5$ chacun." data-ar="حزمة واحدة بسعر واحد. أضف إضافات بـ٥$ عند الحاجة.">One unit, one price. Add extras at $5 each if you need more.</p>
+      </div>
+
+      <div class="price-card">
+        <div class="price-card-head">
+          <div class="price-card-eyebrow">// THE PACKAGE</div>
+          <div class="big-price">$57<small> / unit</small></div>
+          <div class="pack-name">— The Plus Pack</div>
+        </div>
+        <ul class="price-list">
+          <li data-en="Lesson plan in your school's format" data-fr="Plan de leçon dans votre format" data-ar="خطة الدرس بنموذج مدرستك">Lesson plan in your school's format</li>
+          <li data-en="Illustrated student booklet (PDF)" data-fr="Cahier élève illustré (PDF)" data-ar="كتيب الطالب المصور (PDF)">Illustrated student booklet (PDF)</li>
+          <li data-en="Slide deck (PowerPoint)" data-fr="Diaporama (PowerPoint)" data-ar="شرائح العرض (PowerPoint)">Slide deck (PowerPoint)</li>
+          <li data-en="Worksheet + answer key" data-fr="Feuille d'exercices + corrigé" data-ar="ورقة عمل + مفتاح الإجابة">Worksheet + answer key</li>
+          <li data-en="Differentiation strip (Support / Core / Stretch)" data-fr="Différenciation (Soutien / Standard / Extension)" data-ar="شريط التمايز (دعم / أساسي / إثراء)">Differentiation strip (Support / Core / Stretch)</li>
+          <li data-en="1 quiz with answers" data-fr="1 quiz avec corrigé" data-ar="اختبار قصير مع الإجابات">1 quiz with answers</li>
+          <li data-en="1 test with mark scheme" data-fr="1 test avec barème" data-ar="امتحان مع سلم العلامات">1 test with mark scheme</li>
+          <li data-en="Exit ticket" data-fr="Billet de sortie" data-ar="بطاقة الخروج">Exit ticket</li>
+        </ul>
+        <input type="hidden" name="tier" value="Plus Pack">
+      </div>
+
+      <!-- Reassurance grid -->
+      <div class="reassure">
+        <div class="reassure-item"><span class="reassure-mark">[01]</span><span data-en="24-hour delivery" data-fr="Livraison 24h" data-ar="تسليم ٢٤ ساعة">24-hour delivery</span></div>
+        <div class="reassure-item"><span class="reassure-mark">[02]</span><span data-en="Your name on every file" data-fr="Votre nom partout" data-ar="اسمك على كل ملف">Your name on every file</span></div>
+        <div class="reassure-item"><span class="reassure-mark">[03]</span><span data-en="Your school's lesson plan format" data-fr="Format de votre école" data-ar="نموذج مدرستك">Your school's lesson plan format</span></div>
+        <div class="reassure-item"><span class="reassure-mark">[04]</span><span data-en="30 days free tweaks" data-fr="30 jours de retouches" data-ar="٣٠ يوم تعديلات مجانية">30 days free tweaks</span></div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="addon-block">
+        <div class="addon-head" data-en="+ Add-ons · $5 each" data-fr="+ Extras · 5$ chacun" data-ar="+ إضافات · ٥$ لكل واحدة">+ Add-ons · $5 each</div>
+        <div class="addon-sub" data-en="Stack more games or assessments at $5 each." data-fr="Empilez plus de jeux ou évaluations à 5$ chacun." data-ar="أضف المزيد من الألعاب أو التقييمات بـ٥$ لكل واحدة.">Stack more games or assessments at $5 each.</div>
+
+        <div class="addon-row">
+          <input type="number" name="addon_games" min="0" max="50" value="0">
+          <div class="addon-label" data-en="Extra HTML games (Grade 1–6 only)" data-fr="Jeux HTML (1ère–6e)" data-ar="ألعاب HTML (الصف ١–٦)">Extra HTML games (Grade 1–6 only)</div>
+          <div class="addon-price">$5 EA</div>
+        </div>
+        <div class="addon-row">
+          <input type="number" name="addon_quizzes" min="0" max="20" value="0">
+          <div class="addon-label" data-en="Extra quizzes" data-fr="Quiz supplémentaires" data-ar="اختبارات قصيرة إضافية">Extra quizzes</div>
+          <div class="addon-price">$5 EA</div>
+        </div>
+        <div class="addon-row">
+          <input type="number" name="addon_worksheets" min="0" max="20" value="0">
+          <div class="addon-label" data-en="Extra worksheets" data-fr="Feuilles supplémentaires" data-ar="أوراق عمل إضافية">Extra worksheets</div>
+          <div class="addon-price">$5 EA</div>
+        </div>
+        <div class="addon-row">
+          <input type="number" name="addon_tests" min="0" max="20" value="0">
+          <div class="addon-label" data-en="Extra tests" data-fr="Tests supplémentaires" data-ar="امتحانات إضافية">Extra tests</div>
+          <div class="addon-price">$5 EA</div>
+        </div>
+
+        <div class="addon-head" style="margin-top:28px" data-en="+ Special options" data-fr="+ Options spéciales" data-ar="+ خيارات خاصة">+ Special options</div>
+        <div class="multiplier-row">
+          <label class="multi-opt"><input type="checkbox" name="multiplier" value="Bilingual EN/AR (+30%)"><span data-en="Bilingual EN/AR (+30%)" data-fr="Bilingue EN/AR (+30%)" data-ar="ثنائي (+٣٠٪)">Bilingual EN/AR (+30%)</span></label>
+          <label class="multi-opt"><input type="checkbox" name="multiplier" value="Rush under 48h (+50%)"><span data-en="Rush · under 48h (+50%)" data-fr="Express · 48h (+50%)" data-ar="مستعجل ٤٨س (+٥٠٪)">Rush · under 48h (+50%)</span></label>
+        </div>
+
+        <div class="price-preview" id="pricePreview">
+          <div class="breakdown">— set lessons to see total —</div>
+          <div class="total">$0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================ SECTION 6 — NOTES -->
+    <div class="section">
+      <div class="section-head">
+        <div class="section-num">06 / EXTRA</div>
+        <h2 data-en="Anything else?" data-fr="Autre chose ?" data-ar="هل من شيء آخر؟">Anything else?</h2>
+        <p class="section-desc" data-en="Mixed ability class? Special considerations? Drop it here." data-fr="Classe à niveaux mixtes ? Considérations spéciales ?" data-ar="صف بمستويات متفاوتة؟ اعتبارات خاصة؟">Mixed ability class? Special considerations? Drop it here.</p>
+      </div>
+      <div class="field">
+        <textarea name="notes" placeholder="(optional)"></textarea>
+      </div>
+    </div>
+
+    <!-- ============================================ SUBMIT -->
+    <div class="submit-bar">
+      <button type="submit" class="btn" id="submitBtn" data-en="Submit brief" data-fr="Envoyer la demande" data-ar="إرسال الطلب">Submit brief</button>
+      <div class="error-msg" id="errorMsg"></div>
+    </div>
+  </form>
+
+  <!-- LOADING -->
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <div class="loading-text" data-en="// UPLOADING…" data-fr="// ENVOI…" data-ar="// جارٍ الإرسال…">// UPLOADING…</div>
+  </div>
+
+  <!-- THANK YOU -->
+  <div class="thank-you" id="thankYou">
+    <div class="thank-you-eyebrow">// BRIEF RECEIVED</div>
+    <h2 data-en="Got it." data-fr="Reçu." data-ar="تم.">Got it. <em data-en="On it." data-fr="J'y vais." data-ar="جارٍ العمل.">On it.</em></h2>
+    <p data-en="I'll review your brief and get back to you within 24 hours with a confirmed quote and timeline." data-fr="Je reviens vers vous sous 24 heures avec un devis et un calendrier." data-ar="سأتواصل معك خلال ٢٤ ساعة بعرض السعر والجدول الزمني.">I'll review your brief and get back to you within 24 hours with a confirmed quote and timeline.</p>
+    <a href="https://wa.me/96100000000?text=Hi%20Anas%2C%20I%20just%20submitted%20my%20intake%20form%20for%20AB%20Learning%20Pack." class="whatsapp-btn" target="_blank" data-en="WhatsApp Anas →" data-fr="WhatsApp →" data-ar="واتساب ←">WhatsApp Anas →</a>
+    <div class="thank-you-sign">— Anas Baalbaki, AB Learning Pack</div>
+  </div>
+
+</div>
+
+<script>
+// ============================================
+// CONFIG
+// ============================================
+const APPS_SCRIPT_URL = 'PASTE_YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
+const WHATSAPP_NUMBER = '96100000000';
+
+// ============================================
+// LANGUAGE SWITCHER
+// ============================================
+const langButtons = document.querySelectorAll('.lang-btn');
+langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    document.body.className = lang;
+    langButtons.forEach(b => b.classList.toggle('active', b === btn));
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const text = el.dataset[lang];
+      if (!text) return;
+      if (el.tagName === 'OPTION') { el.textContent = text; return; }
+      if (el.children.length === 0) { el.textContent = text; return; }
+      const reqSpan = el.querySelector('.req');
+      el.textContent = text.replace(' *','');
+      if (reqSpan) { el.appendChild(document.createTextNode(' ')); el.appendChild(reqSpan); }
+    });
+  });
+});
+
+// ============================================
+// CURRICULUM "OTHER" TOGGLE
+// ============================================
+const currSel = document.getElementById('curriculumSelect');
+const currOther = document.getElementById('curriculumOther');
+currSel.addEventListener('change', () => {
+  if (currSel.value === 'Other') {
+    currOther.style.display = 'block';
+    currOther.required = true;
+  } else {
+    currOther.style.display = 'none';
+    currOther.required = false;
+    currOther.value = '';
+  }
+});
+
+// ============================================
+// FILE UPLOAD UI
+// ============================================
+document.querySelectorAll('.file-field input[type=file]').forEach(input => {
+  input.addEventListener('change', () => {
+    const wrap = input.closest('.file-field');
+    const label = wrap.querySelector('.upload-label');
+    if (input.files.length > 0) {
+      wrap.classList.add('has-file');
+      label.textContent = '✓ ' + input.files[0].name;
+    } else {
+      wrap.classList.remove('has-file');
+      label.textContent = '// UPLOAD';
+    }
+  });
+});
+
+// ============================================
+// LIVE PRICE PREVIEW — Flat $57 per unit
+// ============================================
+const UNIT_PRICE = 57;
+const ADDON_PRICE = 5;
+const pricePreview = document.getElementById('pricePreview');
+const form = document.getElementById('intakeForm');
+
+function updatePrice() {
+  const lessons = parseInt(document.querySelector('input[name="num_lessons"]').value) || 0;
+  const games = parseInt(document.querySelector('input[name="addon_games"]').value) || 0;
+  const quizzes = parseInt(document.querySelector('input[name="addon_quizzes"]').value) || 0;
+  const worksheets = parseInt(document.querySelector('input[name="addon_worksheets"]').value) || 0;
+  const tests = parseInt(document.querySelector('input[name="addon_tests"]').value) || 0;
+
+  if (lessons === 0) {
+    pricePreview.innerHTML = '<div class="breakdown">— set lessons to see total —</div><div class="total">$0</div>';
+    return;
+  }
+
+  const base = UNIT_PRICE;
+  const addonsCount = games + quizzes + worksheets + tests;
+  const addonsTotal = addonsCount * ADDON_PRICE;
+  const subtotal = base + addonsTotal;
+
+  const bilingual = document.querySelector('input[value="Bilingual EN/AR (+30%)"]').checked;
+  const rush = document.querySelector('input[value="Rush under 48h (+50%)"]').checked;
+
+  let multiplier = 1;
+  if (bilingual) multiplier += 0.30;
+  if (rush) multiplier += 0.50;
+
+  const total = Math.round(subtotal * multiplier);
+
+  let breakdown = `1 × $57 unit (${lessons} lesson${lessons > 1 ? 's' : ''})`;
+  if (addonsTotal > 0) breakdown += `  +  ${addonsCount} × $5 = $${addonsTotal}`;
+  if (multiplier > 1) breakdown += `  ×  ${multiplier.toFixed(2)}`;
+
+  pricePreview.innerHTML = `<div class="breakdown">// ${breakdown}</div><div class="total">$${total} <small>USD</small></div>`;
+}
+
+['num_lessons','addon_games','addon_quizzes','addon_worksheets','addon_tests'].forEach(name => {
+  const el = document.querySelector(`input[name="${name}"]`);
+  if (el) el.addEventListener('input', updatePrice);
+});
+document.querySelectorAll('input[name="multiplier"]').forEach(el => el.addEventListener('change', updatePrice));
+updatePrice();
+
+// ============================================
+// FILE → BASE64
+// ============================================
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      resolve({ name: file.name, mimeType: file.type || 'application/octet-stream', data: reader.result.split(',')[1], size: file.size });
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+// ============================================
+// SUBMIT
+// ============================================
+const submitBtn = document.getElementById('submitBtn');
+const loading = document.getElementById('loading');
+const thankYou = document.getElementById('thankYou');
+const errorMsg = document.getElementById('errorMsg');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorMsg.classList.remove('show');
+
+  const lessons = parseInt(document.querySelector('input[name="num_lessons"]').value) || 0;
+  if (lessons < 1) {
+    errorMsg.textContent = '// ERROR · Set the number of lessons in Section 03.';
+    errorMsg.classList.add('show');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  form.style.display = 'none';
+  loading.classList.add('show');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  try {
+    let curriculum = form.curriculum.value;
+    if (curriculum === 'Other' && form.curriculum_other.value.trim()) {
+      curriculum = 'Other: ' + form.curriculum_other.value.trim();
+    }
+
+    const data = {
+      teacher_name: form.teacher_name.value,
+      email: form.email.value,
+      whatsapp: form.whatsapp.value,
+      school: form.school.value,
+      grade: form.grade.value,
+      subject: form.subject.value,
+      curriculum: curriculum,
+      language: form.language.value,
+      num_lessons: lessons,
+      topic: form.topic.value,
+      lesson_titles: form.lesson_titles.value,
+      outcomes: form.outcomes.value,
+      deadline: form.deadline.value,
+      tier: 'Plus Pack',
+      addons: {
+        games: parseInt(document.querySelector('input[name="addon_games"]').value) || 0,
+        quizzes: parseInt(document.querySelector('input[name="addon_quizzes"]').value) || 0,
+        worksheets: parseInt(document.querySelector('input[name="addon_worksheets"]').value) || 0,
+        tests: parseInt(document.querySelector('input[name="addon_tests"]').value) || 0
+      },
+      multipliers: Array.from(form.querySelectorAll('input[name="multiplier"]:checked')).map(c => c.value),
+      notes: form.notes.value,
+      submitted_at: new Date().toISOString(),
+      form_language: document.body.className
+    };
+
+    const fileFields = ['school_template','teacher_sample','school_logo','coord_checklist'];
+    data.files = {};
+    for (const fieldName of fileFields) {
+      const fi = form[fieldName];
+      if (fi && fi.files.length > 0) data.files[fieldName] = await fileToBase64(fi.files[0]);
+    }
+
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(data)
+    });
+
+    loading.classList.remove('show');
+    thankYou.classList.add('show');
+  } catch (err) {
+    console.error(err);
+    loading.classList.remove('show');
+    form.style.display = 'block';
+    errorMsg.textContent = '// ERROR · ' + err.message + ' · Try again or WhatsApp Anas.';
+    errorMsg.classList.add('show');
+    submitBtn.disabled = false;
+  }
+});
+</script>
+</body>
+</html>
